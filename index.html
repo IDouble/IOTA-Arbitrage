@@ -181,7 +181,7 @@
 								</div> <!-- card -->
 							</div> <!-- 1-5 -->
 						</div> <!-- horizontal ; is-5 -->
-						<div class="tile is-parent is-vertical is-7">
+						<div class="tile is-parent is-vertical is-11">
 							<div class="tile is-child">
 								<div id="usd-to-miota" class="card has-text-centered">
 									<header class="card-header card-stat-item">
@@ -239,35 +239,37 @@
 							</div> <!-- 2-3 -->
 						</div> <!-- horizontal; is-7 -->
 					</div> <!-- tile :vertical is-8 -->
-					<div class="tile is-vertical is-3">
-						<div class="tile is-vertical has-text-centered">
-							<div>
-								<h4 class="title is-size-4">Trades</h2>
+					<div style="display:none;">
+						<div class="tile is-vertical is-3">
+							<div class="tile is-vertical has-text-centered">
+								<div>
+									<h4 class="title is-size-4">Trades</h2>
+								</div>
+								<table style="width:100%">
+									<tr>
+										<th style="width:45%; text-align: center;">Buy</th>
+										<th style="width:30%; text-align: center;">Price</th>
+										<th style="width:25%; text-align: center;">Currency</th>
+									</tr>
+								</table>
+								<table style="width:100%" id="trades-column-buy">
+
+								</table>
 							</div>
-							<table style="width:100%">
-								<tr>
-									<th style="width:45%; text-align: center;">Buy</th>
-									<th style="width:30%; text-align: center;">Price</th>
-									<th style="width:25%; text-align: center;">Currency</th>
-								</tr>
-							</table>
-							<table style="width:100%" id="trades-column-buy">
+							<div class="tile is-vertical has-text-centered">
+								<table style="width:100%">
+									<tr>
+										<th style="width:45%; text-align: center;">Sell</th>
+										<th style="width:30%; text-align: center;">Price</th>
+										<th style="width:25%; text-align: center;">Currency</th>
+									</tr>
+								</table>
+								<table style="width:100%" id="trades-column-sell">
 
-							</table>
-						</div>
-						<div class="tile is-vertical has-text-centered">
-							<table style="width:100%">
-								<tr>
-									<th style="width:45%; text-align: center;">Sell</th>
-									<th style="width:30%; text-align: center;">Price</th>
-									<th style="width:25%; text-align: center;">Currency</th>
-								</tr>
-							</table>
-							<table style="width:100%" id="trades-column-sell">
-
-							</table>
-						</div>
-					</div> <!-- tile :is-vertical is-4 -->
+								</table>
+							</div>
+						</div> <!-- tile :is-vertical is-4 -->
+					</div>
 				</div> <!-- tile :ancestor -0 -->
 			</div> <!-- hero-body -->
 		</section> <!-- hero -->
