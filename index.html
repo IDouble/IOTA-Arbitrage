@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="💠 Eidoo Arbitrage 💠 (Live ticker Eidoo / Ethereum / Bitcoin)">
+
+		<!-- Icon -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="icon" sizes="16x16 32x32 64x64" href="img/favicon.ico">
+		<link rel="icon" type="image/png" sizes="196x196" href="img/favicon-192.png">
+		<link rel="icon" type="image/png" sizes="160x160" href="img/favicon-160.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96.png">
+		<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+		<link rel="apple-touch-icon" href="img/favicon-57.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="img/favicon-114.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="img/favicon-72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="img/favicon-144.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="img/favicon-60.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/favicon-120.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/favicon-76.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/favicon-152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+		<meta name="msapplication-TileColor" content="#FFFFFF">
+		<meta name="msapplication-TileImage" content="img/favicon-144.png">
+		<meta name="msapplication-config" content="/browserconfig.xml">
+		
+		<title>Eidoo Arbitrage</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+		<script type="text/javascript" src="js/bulma-main.js"></script>
+		<script type="text/javascript" src="js/bitfinex.api.ws2.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<link rel="stylesheet" href="css/app.css">
+
+	</head>
+	<body>
+		<section class="hero is-fullheight">
+			<div class="hero-head">
+				<nav class="navbar ">
+					<div class="navbar-brand">
+						<div class="navbar-item">
+							<img src="assets/eidoo_logo.png" alt="Eidoo logo" height="28">
+							&nbsp;
+							<span class="title">Eidoo Arbitrage</span>
+						</div>
+						<a class="navbar-item is-hidden-desktop" href="https://github.com/AYIDouble/Eidoo-Arbitrage" target="_blank">
+							<span class="icon" style="color: #333;"><i class="fa fa-github"></i></span>
+						</a>
+					</div> <!-- navbar-brand -->
+					<div class="navbar-end">
+						<span class="navbar-item">
+							<div class="field">
+								<div class="control has-icons-left">
+									<input id="navbar-amount-input" class="input is-success" type="number" value="1000" min="1">
+									<span class="icon is-small is-left">$</span>
+								</div>
+							</div>
+						</span>
+						<span class="navbar-item">
+							<a id="navbar-loader-button" class="button is-danger is-loading">
+								<span class="icon is-small"><i id="navbar-loader-button-icon" class="fa fa-cog fa-fw"></i></span>
+								<span id="navbar-loader-button-text">LIVE</span>
+							</a>
+						</span>
+						<a class="navbar-item is-hidden-touch" href="https://github.com/AYIDouble/Eidoo-Arbitrage" target="_blank">
+							<span class="icon" style="color: #333;"><i class="fa fa-github"></i></span>
+						</a>
+					</div>
+				</nav> <!-- nav -->
+			</div> <!-- hero-head -->
+
+			<div class="hero-body">
+				<div class="tile is-ancestor">
+					<div class="tile is-9">
+						<div class="tile is-parent is-vertical is-5">
+							<div class="tile is-child">
+								<div id="usd-per-miota" class="card card-price-exchange">
+									<header class="card-header">
+										<p class="card-header-title">USD/Eidoo</p>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-4">$</span>
+											<span class="card-exchange-rate title is-4">NA</span>
+										</div>
+									</div>
+									<footer class="card-footer">
+										<div class="card-footer-item card-exchange-percentage-item">
+											<span class="icon is-pulled-left"><i class="card-exchange-percentage-icon fa fa-chevron-right"></i></span>
+											<span class="card-exchange-percentage-change is-size-5">NA</span>
+											<span class="subtitle is-5">&nbsp;%</span>
+										</div>
+									</footer>
+								</div> <!-- card -->
+							</div> <!-- 1-1 -->
+							<div class="tile is-child">
+								<div id="usd-per-btc" class="card card-price-exchange">
+									<header class="card-header">
+										<p class="card-header-title">USD/BTC</p>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-4">$</span>
+											<span class="card-exchange-rate title is-4">NA</span>
+										</div>
+									</div>
+									<footer class="card-footer">
+										<div class="card-footer-item card-exchange-percentage-item">
+											<span class="icon is-pulled-left"><i class="card-exchange-percentage-icon fa fa-chevron-right"></i></span>
+											<span class="card-exchange-percentage-change is-size-5">NA</span>
+											<span class="subtitle is-5">&nbsp;%</span>
+										</div>
+									</footer>
+								</div> <!-- card -->
+							</div> <!-- 1-2 -->
+							<div class="tile is-child">
+								<div id="usd-per-eth" class="card card-price-exchange">
+									<header class="card-header">
+										<p class="card-header-title">USD/ETH</p>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-4">$</span>
+											<span class="card-exchange-rate title is-4">NA</span>
+										</div>
+									</div>
+									<footer class="card-footer">
+										<div class="card-footer-item card-exchange-percentage-item">
+											<span class="icon is-pulled-left"><i class="card-exchange-percentage-icon fa fa-chevron-right"></i></span>
+											<span class="card-exchange-percentage-change is-size-5">NA</span>
+											<span class="subtitle is-5">&nbsp;%</span>
+										</div>
+									</footer>
+								</div> <!-- card -->
+							</div> <!-- 1-3 -->
+
+							<div class="tile is-child">
+								<div id="btc-per-miota" class="card card-price-exchange">
+									<header class="card-header">
+										<p class="card-header-title">BTC/Eidoo</p>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="icon is-4"><i class="fa fa-btc" aria-hidden="true"></i></span>
+											<span class="card-exchange-rate title is-4">NA</span>
+										</div>
+									</div>
+									<footer class="card-footer">
+										<div class="card-footer-item card-exchange-percentage-item">
+											<span class="icon is-pulled-left"><i class="card-exchange-percentage-icon fa fa-chevron-right"></i></span>
+											<span class="card-exchange-percentage-change is-size-5">NA</span>
+											<span class="subtitle is-5">&nbsp;%</span>
+										</div>
+									</footer>
+								</div> <!-- card -->
+							</div> <!-- 1-4 -->
+
+							<div class="tile is-child">
+								<div id="eth-per-miota" class="card card-price-exchange">
+									<header class="card-header">
+										<p class="card-header-title">ETH/Eidoo</p>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-4">&Xi;</span>
+											<span class="card-exchange-rate title is-4">NA</span>
+										</div>
+									</div>
+									<footer class="card-footer">
+										<div class="card-footer-item card-exchange-percentage-item">
+											<span class="icon is-pulled-left"><i class="card-exchange-percentage-icon fa fa-chevron-right"></i></span>
+											<span class="card-exchange-percentage-change is-size-5">NA</span>
+											<span class="subtitle is-5">&nbsp;%</span>
+										</div>
+									</footer>
+								</div> <!-- card -->
+							</div> <!-- 1-5 -->
+						</div> <!-- horizontal ; is-5 -->
+						<div class="tile is-parent is-vertical is-7">
+							<div class="tile is-child">
+								<div id="usd-to-miota" class="card has-text-centered">
+									<header class="card-header card-stat-item">
+										<h4 class="subtitle is-4">
+											$&nbsp;<span class="card-stat-amount">1000</span>
+											<span class="icon is-medium"><i class="fa fa-arrow-right"></i></span>
+											Eidoo
+										</h4>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-6">Eidoo</span>
+											<span class="card-stat-value title is-4">NA</span>
+										</div>
+									</div>
+								</div> <!-- card -->
+							</div> <!-- 2-1 -->
+							<div class="tile is-child">
+								<div id="usd-to-btc-to-miota" class="card has-text-centered">
+									<header class="card-header card-stat-item">
+										<h4 class="subtitle is-4">
+											$&nbsp;<span class="card-stat-amount">1000</span>
+											<span class="icon is-medium"><i class="fa fa-arrow-right"></i></span>
+											BTC
+											<span class="icon is-medium"><i class="fa fa-arrow-right"></i></span>
+											Eidoo
+										</h4>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-6">Eidoo</span>
+											<span class="card-stat-value title is-4">NA</span>
+										</div>
+									</div>
+								</div> <!-- card -->
+							</div> <!-- 2-2 -->
+							<div class="tile is-child">
+								<div id="usd-to-eth-to-miota" class="card has-text-centered">
+									<header class="card-header card-stat-item">
+										<h4 class="subtitle is-4">
+											$&nbsp;<span class="card-stat-amount">1000</span>
+											<span class="icon is-medium"><i class="fa fa-arrow-right"></i></span>
+											ETH
+											<span class="icon is-medium"><i class="fa fa-arrow-right"></i></span>
+											Eidoo
+										</h4>
+									</header>
+									<div class="card-content">
+										<div class="content">
+											<span class="subtitle is-6">Eidoo</span>
+											<span class="card-stat-value title is-4">NA</span>
+										</div>
+									</div>
+								</div> <!-- card -->
+							</div> <!-- 2-3 -->
+						</div> <!-- horizontal; is-7 -->
+					</div> <!-- tile :vertical is-8 -->
+					<div class="tile is-vertical is-3">
+						<div class="tile is-vertical has-text-centered">
+							<div>
+								<h4 class="title is-size-4">Trades</h2>
+							</div>
+							<table style="width:100%">
+								<tr>
+									<th style="width:45%; text-align: center;">Buy</th>
+									<th style="width:30%; text-align: center;">Price</th>
+									<th style="width:25%; text-align: center;">Currency</th>
+								</tr>
+							</table>
+							<table style="width:100%" id="trades-column-buy">
+
+							</table>
+						</div>
+						<div class="tile is-vertical has-text-centered">
+							<table style="width:100%">
+								<tr>
+									<th style="width:45%; text-align: center;">Sell</th>
+									<th style="width:30%; text-align: center;">Price</th>
+									<th style="width:25%; text-align: center;">Currency</th>
+								</tr>
+							</table>
+							<table style="width:100%" id="trades-column-sell">
+
+							</table>
+						</div>
+					</div> <!-- tile :is-vertical is-4 -->
+				</div> <!-- tile :ancestor -0 -->
+			</div> <!-- hero-body -->
+		</section> <!-- hero -->
+
+		<div id="no-websockets-modal" class="modal is-active">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-64x64 has-text-centered">
+								<span class="icon is-large"><i class="fa fa-3x fa-exclamation-circle"></i></span>
+							</figure>
+						</div>
+						<div class="media-content">
+							<div class="content">
+								<strong>Your browser does not support websockets!</strong>
+								<br>
+								Please switch to a more modern browser and/or update your web browser.
+								<br>
+								<br>
+							</div>
+
+							<nav class="level">
+								<div class="level-left">
+									<a class="level-item" href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank">
+										<span class="icon is-large"><i class="fa fa-chrome"></i></span>
+									</a>
+									<a class="level-item" href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">
+										<span class="icon is-large"><i class="fa fa-firefox"></i></span>
+									</a>
+								</div>
+							</nav>
+						</div> <!-- media-content -->
+					</article>
+				</div> <!-- box -->
+			</div> <!-- modal-content -->
+		</div> <!-- no-websockets-modal -->
+
+		<div id="websockets-too-many-failures-modal" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<div class="box">
+					<article class="media">
+						<div class="media-left">
+							<figure class="image is-64x64 has-text-centered">
+								<span class="icon is-large"><i class="fa fa-3x fa-exclamation-circle"></i></span>
+							</figure>
+						</div>
+						<div class="media-content">
+							<div class="content">
+								<strong>Cannot connect to BitFinex API!</strong>
+								<br>
+								Please check for network connectivity, refresh this page, and/or try again later!
+								<br>
+							</div>
+						</div> <!-- media-content -->
+					</article>
+				</div> <!-- box -->
+			</div> <!-- modal-content -->
+		</div> <!-- websockets-too-many-failures-modal -->
+
+
+		<table id="sample-trade-card" style="display:none;">
+			<tr class="trade-card" style="display:none;" data-tradeid="" data-tradetimestamp="" data-amount="" data-price="">
+				<td style="width:45%; text-align: right;" class="card-trade-amount-miota"></td>
+				<td style="width:30%; text-align: right;" class="card-trade-price"></td>
+				<td style="width:25%; text-align: center;" class="card-trade-currency-from"></td>
+
+				<td class="shim" style="display:none;">
+					<span class="card-trade-currency-to" style="display:none;"></span>
+					<span class="card-trade-price-unit" style="display: none;"></span>
+					<span style="display: none;"><i class="fa fa-circle-o-notch fa-spin fa-fw card-trade-status-icon"></i></span>
+					<span class="card-trade-status-text" style="display: none;"></span>
+					<span class="card-trade-timestamp-text" style="display: none;"></span>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

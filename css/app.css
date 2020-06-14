@@ -1,0 +1,86 @@
+@keyframes spinAround {
+	from {
+		transform: rotate(0deg); 
+	}
+	to {
+		transform: rotate(359deg); 
+	} 
+}
+
+body {
+	background-color: whitesmoke; 
+}
+
+body .trade-card .column {
+	padding-top: 0;
+	padding-bottom: 0; 
+}
+
+body .tile.is-vertical > .tile.is-child:not(:last-child) {
+	margin-bottom: 0.5rem !important; 
+}
+
+#no-websockets-modal span.icon i.fa.fa-exclamation-circle::before, #websockets-too-many-failures-modal span.icon i.fa.fa-exclamation-circle::before {
+	color: #ff3860; 
+}
+
+.card {
+	width: 100%; 
+}
+
+.card.card-price-exchange {
+	max-height: min-content;
+	max-height: fit-content; 
+}
+
+.card.card-price-exchange p.card-header-title {
+	padding-top: 0.1em;
+	padding-bottom: 0.1em; 
+}
+
+.card.card-price-exchange .card-content {
+	padding-top: 0.2em;
+	padding-bottom: 0.1em; 
+}
+
+.card.card-price-exchange .card-footer-item {
+	padding-top: 0.1em;
+	padding-bottom: 0.1em; 
+}
+
+.card .card-footer .card-footer-item.is-success .icon .card-exchange-percentage-icon {
+	color: #23d160; 
+}
+
+.card .card-footer .card-footer-item.is-danger .icon .card-exchange-percentage-icon {
+	color: maroon; 
+}
+
+.card .card-header.is-success {
+	border: solid #23d160 3px; 
+}
+
+.card .card-header.is-danger {
+	border: solid #ff3860 2px; 
+}
+
+.card.has-text-centered .card-header,
+.card.has-text-centered .card-content,
+.card.has-text-centered .card-footer {
+	justify-content: center;
+	align-items: center; 
+}
+
+.card.has-text-centered .card-header {
+	padding: 0.25rem 0; 
+}
+
+.card.trade-card {
+	margin-bottom: 0.2rem; 
+}
+
+.card.trade-card .card-footer p.trade-status {
+	text-align: left; 
+}
+
+/*# sourceMappingURL=app.css.map */
