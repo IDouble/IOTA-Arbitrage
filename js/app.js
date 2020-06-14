@@ -9,7 +9,7 @@ const EXCHANGE_RATE_PRICE_RESOLUTION = 8;
 const EXCHANGE_RATE_PERCENT_FLOAT_RESOLUTION = 2;
 const EXCHANGE_RATE_PERCENT_INT_RESOLUTION = 2;
 const ARBITRAGE_RESOLUTION = 8;
-const TRADE_Eidoo_RESOLUTION = 8;
+const TRADE_IOTA_RESOLUTION = 8;
 const TRADE_PRICE_RESOLUTION = 8;
 
 /* exchange vars */
@@ -34,14 +34,14 @@ var bfxopen = function() {
 
 	__bfx.subscribeTicker('tBTCUSD');
 	__bfx.subscribeTicker('tETHUSD');
-	__bfx.subscribeTicker('tEDOUSD');
-	__bfx.subscribeTicker('tEDOBTC');
-	__bfx.subscribeTicker('tEDOETH');
+	__bfx.subscribeTicker('tIOTUSD');
+	__bfx.subscribeTicker('tIOTBTC');
+	__bfx.subscribeTicker('tIOTETH');
 
 
-	__bfx.subscribeTrades('tEDOUSD');
-	__bfx.subscribeTrades('tEDOBTC');
-	__bfx.subscribeTrades('tEDOETH');
+	__bfx.subscribeTrades('tIOTUSD');
+	__bfx.subscribeTrades('tIOTBTC');
+	__bfx.subscribeTrades('tIOTETH');
 
 	if ($loaderButton) {
 		$loaderButton.classList.add('is-success');
@@ -246,7 +246,7 @@ var bfxticker = function(pair, data){
 		return;
 	}
 
-	if (pair == "EDOUSD") {
+	if (pair == "IOTUSD") {
 		const $e_usdpermiota = document.getElementById('usd-per-miota');
 		updateCard(pair, data, $e_usdpermiota);
 		usd_per_miota = price;
@@ -258,11 +258,11 @@ var bfxticker = function(pair, data){
 		const $e_usdpereth = document.getElementById('usd-per-eth');
 		updateCard(pair, data, $e_usdpereth);
 		usd_per_eth = price;
-	} else if (pair == "EDOBTC") {
+	} else if (pair == "IOTBTC") {
 		const $e_btcpermiota = document.getElementById('btc-per-miota');
 		updateCard(pair, data, $e_btcpermiota);
 		btc_per_miota = price;
-	} else if (pair == "EDOETH") {
+	} else if (pair == "IOTETH") {
 		const $e_ethpermiota = document.getElementById('eth-per-miota');
 		updateCard(pair, data, $e_ethpermiota);
 		eth_per_miota = price;
@@ -272,21 +272,21 @@ var bfxticker = function(pair, data){
 };
 
 var __get_from_to = function(pair, amount) {
-	if (pair == "EDOUSD") {
+	if (pair == "IOTUSD") {
 		if (amount < 0) {
-			return ["Eidoo", "USD"];
+			return ["IOTA", "USD"];
 		}
-		return ["USD", "Eidoo"];
-	} else if (pair == "EDOBTC") {
+		return ["USD", "IOTA"];
+	} else if (pair == "IOTBTC") {
 		if (amount < 0) {
-			return ["Eidoo", "BTC"];
+			return ["IOTA", "BTC"];
 		}
-		return ["BTC", "Eidoo"];
-	} else if (pair == "EDOETH") {
+		return ["BTC", "IOTA"];
+	} else if (pair == "IOTETH") {
 		if (amount < 0) {
-			return ["Eidoo", "ETH"];
+			return ["IOTA", "ETH"];
 		}
-		return ["ETH", "Eidoo"];
+		return ["ETH", "IOTA"];
 	} else {
 		return ["NA", "NA"];
 	}
@@ -411,7 +411,7 @@ var addCard = function(pair, data, update = 2) {
 		if (trade.amount < 0) {
 			$v_amount = $v_amount * -1;
 		}
-		$e_miota.innerHTML = $v_amount.toFixed(TRADE_Eidoo_RESOLUTION);
+		$e_miota.innerHTML = $v_amount.toFixed(TRADE_IOTA_RESOLUTION);
 
 		/*
 			SET price and unit
